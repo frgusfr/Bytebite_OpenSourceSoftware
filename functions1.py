@@ -47,3 +47,12 @@ def calculate_time(distance, transport, traffic_level):
 
 def calculate_cost(distance, transport, people):
     return (distance * COSTS[transport]) / people
+
+def log_trip(distance, transport, people, traffic):
+    emissions = calculate_emissions(distance, transport, people)
+    time = calculate_time(distance, transport, traffic)
+    cost = calculate_cost(distance, transport, people)
+
+    travel_log.append((distance, transport, people, emissions, time, cost))
+
+    return emissions, time, cost
