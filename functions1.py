@@ -56,3 +56,19 @@ def log_trip(distance, transport, people, traffic):
     travel_log.append((distance, transport, people, emissions, time, cost))
 
     return emissions, time, cost
+
+def smart_comparator(distance, people, traffic):
+    results = {}
+
+    for t in EMISSION_FACTORS.keys():
+        emi = calculate_emissions(distance, t, people)
+        time = calculate_time(distance, t, traffic)
+        cost = calculate_cost(distance, t, people)
+
+        # Weighted scoring system
+        score = emi * 0.4 + time * 0.3 + cost * 0.3
+
+        results[t] = (emi, time, cost, score)
+
+    best = min(results, key=lambda x: results[x][3])
+    return best, results[best]
