@@ -1,0 +1,1 @@
+This project includes the code of the Smart Travel Calculator, a program in python used to calculate and give the user the emissions of the vehicle, the estimated time, the approximate cost and even the most suitable transport for the task based in parameters like the distance, people in that vehicle and traffic.
