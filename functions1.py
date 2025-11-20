@@ -37,7 +37,7 @@ Traffic = {
 # FUNCTIONS
 
 def calculate_emissions(distance, transport, people):
-    return (distance * EMISSION_FACTORS[transport]) / people
+    return (distance * EMISSION[transport]) / people
 
 
 def calculate_time(distance, transport, traffic_level):
