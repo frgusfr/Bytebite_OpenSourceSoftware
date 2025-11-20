@@ -86,15 +86,44 @@ def menu():
         option = input("Choose an option: ")
 
         if option == "1":
-            
+            distance = float(input("Distance in km: "))
+            transport = input("Transport: ").lower()
+            people = int(input("Number of people sharing the transport: "))
+            traffic = input("Traffic level (low/medium/high): ").lower()
+
+            emissions, time, cost = log_trip(distance, transport, people, traffic)
+
+            print(f"\n--- TRIP LOGGED ---")
+            print(f"Emissions: {emissions:.2f} kg CO₂")
+            print(f"Estimated time: {time:.2f} hours")
+            print(f"Approximate cost: {cost:.2f} €")
 
         elif option == "2":
-            
+            distance = float(input("Distance in km: "))
+            people = int(input("Number of people: "))
+            traffic = input("Traffic level (low/medium/high): ").lower()
+
+            best, data = smart_comparator(distance, people, traffic)
+            emi, time, cost, _ = data
+
+            print("\n--- BEST OVERALL OPTION ---")
+            print(f"Recommended transport: {best}")
+            print(f"Emissions: {emi:.2f} kg CO₂")
+            print(f"Time: {time:.2f} h")
+            print(f"Cost: {cost:.2f} €")
 
         elif option == "3":
-          
+            print("\n--- TRIP LOG ---")
+            for trip in travel_log:
+                print(trip)
 
         elif option == "4":
+            print("Exiting...")
+            break
 
         else:
             print("Invalid option.")
+
+
+if __name__ == "__main__":
+    menu()
